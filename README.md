@@ -1,4 +1,4 @@
-# Isomorphic + React + Mobx Clean Starter project
+# Isomorphic React + Mobx Starter project
 
 The goal of this project is to provide a starting base for an mobx react project with isomorphism and SEO compabilities ( meta tags change ).
 
