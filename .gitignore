@@ -40,5 +40,5 @@ jspm_packages
 typings
 typings.json
 tmp
-public
 .idea
+.vscode
