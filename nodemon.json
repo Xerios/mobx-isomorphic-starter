@@ -1,0 +1,5 @@
+{
+  "ext": "js jsx",
+  "verbose": false,
+  "ignore": ["tmp/*", "typings/*"]
+}

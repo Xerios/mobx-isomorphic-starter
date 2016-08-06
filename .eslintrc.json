@@ -1,0 +1,76 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "amd": true
+    },
+    "ignore": [
+        "typings",
+        "public"
+    ],
+    "plugins": [
+        "react",
+        "babel"
+    ],
+    "globals":{
+        "Promise":true
+    },
+    "rules": {
+        "strict": 0,
+        "react/prop-types": [0],
+        "comma-dangle": 0,
+        "no-console": 0,
+        ////////// Possible Errors //////////
+        "no-cond-assign": 1,          // disallow assignment in conditional expressions
+        "no-constant-condition": 1,   // disallow use of constant expressions in conditions
+        "no-control-regex": 1,        // disallow control characters in regular expressions
+        "no-debugger": 0,             // disallow use of debugger
+        "no-dupe-keys": 1,            // disallow duplicate keys when creating object literals
+        "no-empty": 0,                // disallow empty statements
+        "no-ex-assign": 1,            // disallow assigning to the exception in a catch block
+        "no-extra-boolean-cast": 1,   // disallow double-negation boolean casts in a boolean context
+        "no-extra-semi": 1,           // disallow unnecessary semicolons
+        "no-func-assign": 1,          // disallow overwriting functions written as function declarations
+        "no-inner-declarations": 0,   // disallow function or variable declarations in nested blocks
+        "no-invalid-regexp": 2,       // disallow invalid regular expression strings in the RegExp constructor
+        "no-irregular-whitespace": 0, // disallow irregular whitespace outside of strings and comments
+        "no-negated-in-lhs": 0,       // disallow negation of the left operand of an in expression
+        "no-obj-calls": 0,            // disallow the use of object properties of the global object (Math and JSON) as functions
+        "no-regex-spaces": 1,         // disallow multiple spaces in a regular expression literal
+        "no-sparse-arrays": 1,        // disallow sparse arrays
+        "no-unreachable": 1,          // disallow unreachable statements after a return, throw, continue, or break statement
+        "use-isnan": 1,               // disallow comparisons with the value NaN
+        "valid-typeof": 1,            // Ensure that the results of typeof are compared against a valid string
+        
+
+         ////////// Best Practices //////////
+        "eqeqeq": 1,                // require the use of === and !==
+        "no-div-regex": 1,          // disallow division operators explicitly at beginning of regular expression (off by default)
+        "no-eq-null": 1,            // disallow comparisons to null without a type-checking operator (off by default)
+   	    "no-eval": 1,               // disallow use of eval()
+        "no-catch-shadow": 1,             // disallow the catch clause parameter name being the same as a variable in the outer scope (off by default in the node environment)
+        "no-label-var": 1,                // disallow labels that share a name with a variable
+        "no-shadow-restricted-names": 1,  // disallow shadowing of names such as arguments
+        "no-undef": 1,                    // disallow use of undeclared variables unless mentioned in a /*global */ block
+        "no-undef-init": 1,               // disallow use of undefined when initializing variables
+        "no-undefined": 1,                // disallow use of undefined variable (off by default)
+        "no-unused-vars": 1,              // disallow declaration of variables that are not used in the code
+
+        "semi-spacing": 1,      // disallow space before semicolon
+        "comma-spacing": 0,             // enforce spacing before and after comma
+        "no-lonely-if": 1,              // disallow if as the only statement in an else block (off by default)
+        "semi": 0
+    }
+}

@@ -1,0 +1,48 @@
+$text:#222b37;
+$links:#aa88ee;
+$bg: #eee;
+
+html{
+    color:$text;
+    background-color: $bg;
+    overflow-y: scroll;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: normal;
+    font-size: 1rem;
+}
+
+#root{
+    max-width: 50em;
+ 	margin: 0 auto; 
+    display: flex;
+    flex-direction : column;
+    padding:1rem 2rem;
+    background-color: lighten($bg,10%);
+}
+
+a{
+    color:$links;
+    text-decoration: none;
+
+    &:visited{
+        color:$links;
+    }
+    
+    &:hover{
+        color:darken($links,20%)
+    }
+}
+
+nav{
+    a{
+        padding: 1rem;
+        background: transparent;
+
+        &.active{
+            background:lighten($links,20%)
+        }
+    }
+}
