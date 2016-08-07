@@ -2,7 +2,7 @@
 
 The goal of this project is to provide a starting base for an mobx react project with isomorphism and SEO compabilities ( meta tags change ).
 
-Based on nightwolfz/mobx-starter, except that it's cleaner and simplified.
+Based on [nightwolfz/mobx-starter](https://github.com/nightwolfz/mobx-starter), except that it's cleaner and simplified.
 
 Features:
 + Simplified flexible isomorphic system ( fetchData )
