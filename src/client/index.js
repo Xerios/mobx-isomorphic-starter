@@ -36,7 +36,11 @@ function onRouterUpdate() {
         return
     }
     //console.log("Page changed, executiung fetchData")
-    this.state.components.filter(c => c.fetchData).forEach(c => c.fetchData({ state, store: context.store }))
+    let params = this.state.params;
+
+    this.state.components.filter(c => c.fetchData).forEach(c => {
+        c.fetchData({ state, params, store: context.store })
+    })
 }
 
 
