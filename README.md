@@ -2,7 +2,7 @@
 
 The goal of this project is to provide a starting base for an mobx react project with isomorphism and SEO compabilities ( meta tags change ).
 
-Based on nightwolfz/mobx-starter, except that it's cleaner and simplified.
+Based on [nightwolfz/mobx-starter](https://github.com/nightwolfz/mobx-starter), except that it's cleaner and simplified.
 
 Features:
 + Simplified flexible isomorphic system ( fetchData )
@@ -40,7 +40,7 @@ export default class Browse extends React.Component {
         return <section>
             <h1>Browse</h1>
             <p>This is delayed page example, executed on server and client alike</p>
-            <p>Try refreshing and you'll see it takes 1 second to load this page, while changing routes on the client remains async</p>
+            <p>Try refreshing and you`ll see it takes 1 second to load this page, while changing routes on the client remains async</p>
             <p>{state.browse.data}</p>
         </section>
     }
