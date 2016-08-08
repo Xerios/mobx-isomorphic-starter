@@ -21,7 +21,7 @@ Setting up isomorphic components is as easy as this :
 export default class Browse extends React.Component {
     // Executed on client and server ( server waits for Promise to be resolved )
     //-----------------------------------
-    static fetchData({state}){
+    static fetchData({state, params}){
         state.app.title = 'Browse' // Change document title
         state.browse.data = 'Loading...' // You can add a loader for the client side rendering
 
