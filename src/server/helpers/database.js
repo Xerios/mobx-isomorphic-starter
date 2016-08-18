@@ -13,5 +13,6 @@ db.once('open', () => console.info('Mongodb started on port 27017'))
 
 // Initialize our models
 export default db
+//export const Test = db.model('Test', require('../models/Test'))
 //export const Account = db.model('Account', require('../models/Account'))
 //export const Todo = db.model('Todo', require('../models/Todo'))
