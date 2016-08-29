@@ -46,10 +46,8 @@ function renderRouter() {
     render(<Router history={browserHistory}
                 render={createElement}
                 onUpdate={onRouterUpdate}
-                routes={createRoutes(state)}/>,
+                routes={createRoutes()}/>,
     document.getElementById('root'))
 }
 
 renderRouter()
-
-//if (module.hot) module.hot.accept()

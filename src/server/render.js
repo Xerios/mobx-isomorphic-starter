@@ -25,7 +25,7 @@ export default (req, res) => {
 
     // Prepare for routing
     let matchRoutes = {
-        routes : createRoutes(state),
+        routes : createRoutes(),
         location: req.originalUrl
     }
 

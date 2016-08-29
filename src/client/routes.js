@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, IndexRoute } from 'react-router'
+import { Route } from 'react-router'
 import App from './containers/App.jsx'
 
 /**
@@ -19,7 +19,7 @@ function requireAsync(main) {
  * @param {Object}
  * @returns {Object}
  */
-export default function createRoutes(state) {
+export default function createRoutes() {
     return (<Route component={App}>
                 <Route path="/"      getComponent={requireAsync('Home')}/>
                 <Route path="browse" getComponent={requireAsync('Browse')}/>
