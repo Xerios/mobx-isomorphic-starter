@@ -16,7 +16,7 @@ Features:
 
 Setting up isomorphic components is as easy as this :
 ````js
-@inject("state") @observer
+@observer(["state"])
 export default class Browse extends React.Component {
     // Executed on client and server ( server waits for Promise to be resolved )
     //-----------------------------------

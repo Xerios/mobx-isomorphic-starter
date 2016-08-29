@@ -1,7 +1,7 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-@inject("state") @observer
+@observer(["state"])
 export default class Browse extends React.Component {
     static fetchData({state}){
         state.app.title = 'Browse'
