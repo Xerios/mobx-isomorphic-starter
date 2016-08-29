@@ -38,7 +38,7 @@ export default class Browse extends React.Component {
         return <section>
             <h1>Browse</h1>
             <p>This is delayed page example, executed on server and client alike</p>
-            <p>Try refreshing and you'll see it takes 1 second to load this page, while changing routes on the client remains async</p>
+            <p>Try refreshing and you`ll see it takes 1 second to load this page, while changing routes on the client remains async</p>
             <p>{this.props.state.browse.data}</p>
         </section>
     }
