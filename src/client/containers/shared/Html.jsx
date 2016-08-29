@@ -1,15 +1,16 @@
 //--------------------------------
-// This is ONLY rendered on SERVER
+// This is rendered ONLY on SERVER
 //--------------------------------
 import React from 'react'
-import { connect } from 'mobx-connect'
+import { inject, observer } from 'mobx-react'
 
 if (process.env.IS_CLIENT===true) throw "React Component <Html/> shouldn't be included in the client"
 
-@connect
+@inject("state") @observer
 export default class Html extends React.Component {
     render() {
-        const { state } = this.context
+        //const { state } = this.context
+        const state = this.props.state
 
         // Setup devServerURL accordingly ( webpack dev server has a different port )
         const isProd = process.env.NODE_ENV === 'production'

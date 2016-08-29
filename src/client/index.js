@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
+import { Provider } from 'mobx-react'
 import { Router, RouterContext, browserHistory } from 'react-router'
 
-import Context from './containers/shared/Context.jsx'
-import routes from './routes'
 import createState from './state'
+import createRoutes from './routes'
 
 import autorun from './autorun.js'
 
@@ -13,19 +13,16 @@ require('./assets/css/index.scss')
 
 // Initialize stores & inject server-side state into front-end
 const state = createState(window.__STATE)
-const context = {
-    state,
-    store:{}
-}
+const store = {}
 
 // Setup autorun ( for document title change )
 autorun(state)
 
-// Wrap RouterContext with Context for state transfer ( required for mobx-connect )
+// Wrap RouterContext with Provider for state transfer 
 function createElement(props) {
-    return <Context context={context}>
+    return <Provider state={state} store={store}>
         <RouterContext {...props} />
-    </Context>
+    </Provider>
 }
 
 var ignoreFirstLoad = true
@@ -35,11 +32,11 @@ function onRouterUpdate() {
         ignoreFirstLoad=false
         return
     }
-    //console.log("Page changed, executiung fetchData")
+    //console.log("Page changed, executing fetchData")
     let params = this.state.params;
 
     this.state.components.filter(c => c.fetchData).forEach(c => {
-        c.fetchData({ state, params, store: context.store })
+        c.fetchData({ state, params, store })
     })
 }
 
@@ -49,7 +46,7 @@ function renderRouter() {
     render(<Router history={browserHistory}
                 render={createElement}
                 onUpdate={onRouterUpdate}
-                routes={routes(context)}/>,
+                routes={createRoutes(state)}/>,
     document.getElementById('root'))
 }
 

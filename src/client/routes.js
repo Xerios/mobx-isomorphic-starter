@@ -19,7 +19,7 @@ function requireAsync(main) {
  * @param {Object}
  * @returns {Object}
  */
-export default function createRoutes({ state }) {
+export default function createRoutes(state) {
     return (<Route component={App}>
                 <Route path="/"      getComponent={requireAsync('Home')}/>
                 <Route path="browse" getComponent={requireAsync('Browse')}/>

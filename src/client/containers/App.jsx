@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'mobx-connect'
 
 import Menu from '../components/Menu.jsx'
 
@@ -10,7 +9,6 @@ var menuData = [
   {title: "Not Found", path:"this_url_doesnt_exist"},
 ]
 
-@connect
 export default class App extends React.Component {
     render(){
         return <div>

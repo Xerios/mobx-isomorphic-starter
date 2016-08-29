@@ -1,7 +1,7 @@
 import React from 'react'
-import { connect } from 'mobx-connect'
+import { inject, observer } from 'mobx-react'
 
-@connect
+@inject("state") @observer
 export default class Home extends React.Component {
     static fetchData({state}){
         state.app.title = 'Home'
