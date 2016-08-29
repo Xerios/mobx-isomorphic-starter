@@ -73,14 +73,13 @@ If you want to run production build on your development machine, use cross-env (
 I needed a fully isomorphic website where most important data is shared through out the whole application.
 So I made this simplified, bloatware-free code for starting a new isomorphic project.
 
-We have one main state object that's observable and all react components decorated with `@inject("state") @observer` have access to it ( though <Provider /> ).
+We have one main state object that's observable and all react components decorated with `@observer(['state'])` have access to it ( though `<Provider />` ).
 
 All the rendering is efficiently taken care by [MobX](https://github.com/mobxjs/mobx)
 
 # F.A.Q.
 
-##### How to add mongoose models ?
----
+#### How to add mongoose models ?
 1. Goto `src/server/models`
 2. Add `[Name].js`
 3. Goto `src/helpers/database`
@@ -88,22 +87,23 @@ All the rendering is efficiently taken care by [MobX](https://github.com/mobxjs/
 5. Require your model like this `import {Account} from './src/helpers/database`
 
 
-##### How do I make my components isomorpic?
----
-Check if you added the `static fetchData({state}){` static function properly to your component.
 
-##### My isomorphic component is acting strange / isn't waiting until the request has been done
----
+#### How do I make my components isomorpic?
+Check if you added the `static fetchData({state, store, params}){` static function properly to your component.
+
+
+
+#### My isomorphic component is acting strange / isn't waiting until the request has been done
 Verify if your `fetchData` is returning a Promise and resolve is executed once all required data is fetched.
 
 
-##### My components are not updating!
----
+
+#### My components are not updating!
 Make sure you added the `@inject("state") @observer` decorator to your component.
 
 
-##### My stateless component doesn't have access to state !
----
+
+#### My stateless component doesn't have access to state !
 You cannot use decorators on stateless components.
 You should instead wrap your component like this:
 
@@ -113,13 +113,14 @@ const MyStatelessComponent = inject("state")(observer(function(props, context) {
 }))
 ````
 
-##### The propType of an observable array is object
----
+
+
+#### The propType of an observable array is object
 Observable arrays are actually objects, so they comply to propTypes.object instead of array.
 
 
-##### Where can I find a more complex starter ?
----
+
+#### Where can I find a more complex starter ?
 Check out nightwolfz's implementation ! 
 [https://github.com/nightwolfz/mobx-starter](https://github.com/nightwolfz/mobx-starter)
 
