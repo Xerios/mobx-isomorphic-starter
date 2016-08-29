@@ -6,18 +6,17 @@ Based on [nightwolfz/mobx-starter](https://github.com/nightwolfz/mobx-starter), 
 
 Features:
 + Simplified flexible isomorphic system ( fetchData )
-+ Document title and description change
++ Uses Provider to inject global state into Components
++ Document title, keywords and description change integration
 + CSS and SCSS compilation
-+ MongoDB
 + Hot reload for development ( page auto-refresh )
-+ Decorators for accessing actions and state
-+ Battle-tested ( see UnityList.com )
++ Battle-tested structure ( see UnityList.com )
 
 ![Preview](preview.png)
 
 Setting up isomorphic components is as easy as this :
 ````js
-@connect
+@inject("state") @observer
 export default class Browse extends React.Component {
     // Executed on client and server ( server waits for Promise to be resolved )
     //-----------------------------------
@@ -36,12 +35,11 @@ export default class Browse extends React.Component {
     // Render
     //-----------------------------------
     render() {
-        const {state} = this.context
         return <section>
             <h1>Browse</h1>
             <p>This is delayed page example, executed on server and client alike</p>
-            <p>Try refreshing and you`ll see it takes 1 second to load this page, while changing routes on the client remains async</p>
-            <p>{state.browse.data}</p>
+            <p>Try refreshing and you'll see it takes 1 second to load this page, while changing routes on the client remains async</p>
+            <p>{this.props.state.browse.data}</p>
         </section>
     }
 }
@@ -64,7 +62,8 @@ If you want to run production build on your development machine, use cross-env (
 
 * Express + express-router
 * React + react-router
-* Mongoose
+* Mobx + mobx-react
+* Mongoose ( optional )
 * Babel
 * Webpack
 * Sass/SCSS loaders
@@ -74,10 +73,9 @@ If you want to run production build on your development machine, use cross-env (
 I needed a fully isomorphic website where most important data is shared through out the whole application.
 So I made this simplified, bloatware-free code for starting a new isomorphic project.
 
-We have one main state object that's observable and all react components decorated with `@connect` have access to it ( though this.context ).
+We have one main state object that's observable and all react components decorated with `@inject("state") @observer` have access to it ( though <Provider /> ).
 
 All the rendering is efficiently taken care by [MobX](https://github.com/mobxjs/mobx)
-
 
 # F.A.Q.
 
@@ -101,30 +99,19 @@ Verify if your `fetchData` is returning a Promise and resolve is executed once a
 
 ##### My components are not updating!
 ---
-Make sure you added the `@connect` decorator to your component.
+Make sure you added the `@inject("state") @observer` decorator to your component.
 
 
-##### My stateless component doesn't have access to this.context !
+##### My stateless component doesn't have access to state !
 ---
 You cannot use decorators on stateless components.
 You should instead wrap your component like this:
 
-```js
-const MyStatelessComponent = connect(function(props, context) {
+````js
+const MyStatelessComponent = inject("state")(observer(function(props, context) {
   return <p>{context.state.something} !</p>
-})
+}))
 ````
-
-##### Should I use @connect on all components ?
----
-`@connect` only enhances the component you are decorating, not the components used inside it.
-So usually all your components should be decorated.
-Don't worry, this is not inefficient, in contrast, more observer components make rendering more efficient.
-
-##### Should I use @observer on @connect'ed components ?
----
-`@connect` already adds `@observer` automatically, no need to add it again.
-
 
 ##### The propType of an observable array is object
 ---
@@ -135,11 +122,6 @@ Observable arrays are actually objects, so they comply to propTypes.object inste
 ---
 Check out nightwolfz's implementation ! 
 [https://github.com/nightwolfz/mobx-starter](https://github.com/nightwolfz/mobx-starter)
-
-##### Where can I find more help ?
----
-`@connect` uses the amazing library [MobX](https://github.com/mobxjs/mobx), go check out their
-[wiki page](https://mobxjs.github.io/mobx/best/pitfalls.html) for more information!
 
 
 
