@@ -4,7 +4,7 @@ import logger      from 'morgan'
 import bodyParser  from 'body-parser'
 import compression from 'compression'
 import config      from '../../config/server.config'
-import db          from './helpers/database'
+import db          from './helpers/database' // Even if we don't use it yet, we start db as soon as possible
 
 const app = express()
 
@@ -27,7 +27,6 @@ if (config.http.static.length !== 0) {
     })
 }
 
-//app.use(require('./get'))
 app.use('/*', require('./render.js'))
 app.listen(config.http.port)
 console.log("Launched ! Running on localhost:"+config.http.port)

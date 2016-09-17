@@ -89,7 +89,7 @@ All the rendering is efficiently taken care by [MobX](https://github.com/mobxjs/
 
 
 #### How do I make my components isomorpic?
-Check if you added the `static fetchData({state, store, params}){` static function properly to your component.
+Check if you added the `static fetchData({state, params, query}){` static function properly to your component.
 
 
 
@@ -108,7 +108,7 @@ You cannot use decorators on stateless components.
 You should instead wrap your component like this:
 
 ````js
-const MyStatelessComponent = inject("state")(observer(function(props, context) {
+const MyStatelessComponent = observer(['state'],function(props, context) {
   return <p>{context.state.something} !</p>
 }))
 ````
