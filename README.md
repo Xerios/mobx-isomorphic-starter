@@ -10,7 +10,7 @@ Features:
 + Document title, keywords and description change integration
 + CSS and SCSS compilation
 + Hot reload for development ( page auto-refresh )
-+ Battle-tested structure ( see UnityList.com )
++ Battle-tested structure ( see [UnityList.com](http://unitylist.com/) )
 
 ![Preview](preview.png)
 
