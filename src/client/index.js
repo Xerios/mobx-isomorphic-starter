@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'mobx-react'
 import { Router, RouterContext, browserHistory } from 'react-router'
 
-import createState from './state'
+import { createClientState } from './state'
 import createRoutes from './routes'
 
 import autorun from './autorun.js'
@@ -11,8 +11,8 @@ import autorun from './autorun.js'
 // Import our styles
 require('./assets/css/index.scss')
 
-// Initialize stores & inject server-side state into front-end
-const state = createState(window.__STATE)
+// Initialize stores
+const state = createClientState()
 
 // Setup autorun ( for document title change )
 autorun(state)
@@ -31,9 +31,10 @@ function onRouterUpdate() {
         ignoreFirstLoad=false
         return
     }
-    //console.log("Page changed, executing fetchData")
-    let params = this.state.params;
-    let query = this.state.location.query;
+
+    // Page changed, executing fetchData
+    let params = this.state.params
+    let query = this.state.location.query
 
     this.state.components.filter(c => c.fetchData).forEach(c => {
         c.fetchData({ state, params, query })

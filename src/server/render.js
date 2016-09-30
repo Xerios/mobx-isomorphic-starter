@@ -7,7 +7,7 @@ import fetchData from './helpers/fetchData'
 
 import Html from '../client/containers/shared/Html.jsx'
 
-import createState from '../client/state'
+import {createServerState} from '../client/state'
 import createRoutes from '../client/routes'
 
 // Handles page rendering ( for isomorphic / server-side-rendering too )
@@ -15,7 +15,7 @@ import createRoutes from '../client/routes'
 export default (req, res) => {
     
     // Create state to transfer
-    const state = createState()
+    const state = createServerState()
     
     // Set host variable to header's host
     state.app.host = req.headers.host

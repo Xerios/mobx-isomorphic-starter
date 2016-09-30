@@ -1,4 +1,5 @@
-const { observable, extendObservable, toJS } = require('mobx')
+import { observable, toJS } from 'mobx'
+import mergeObservables from '../server/helpers/mergeObservables'
 
 // Default state structure
 let defaultState =  observable({
@@ -12,7 +13,9 @@ let defaultState =  observable({
     }
 })
 
-// Export an instance of our state ( function so that we don't re-use same object for every session )
-module.exports = (state) => {
-    return process.env.IS_CLIENT === true ? extendObservable(defaultState, state) : toJS(defaultState)
-}
+
+// Export function that creates our server tate
+export const createServerState = () => toJS(defaultState)
+
+// Export function that creates our client state
+export const createClientState = () => mergeObservables(defaultState, window.__STATE)
