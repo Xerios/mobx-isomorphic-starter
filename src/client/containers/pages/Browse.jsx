@@ -1,17 +1,13 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 
-@observer(["state"]) // Only required if you use or change the state outside fetchData
+@observer(["state"]) // Only required if you use or change the state outside fetchData 
+// @observer(["state", "actions"]) // For instance "actions" doesn't need to be injected if you only use it in fetchData
 export default class Browse extends React.Component {
-    static fetchData({state, query}){
+    static fetchData({state, actions, query}){
         state.app.title = 'Browse'
         state.browse.data = 'Loading...'
-        return new Promise((resolve)=>{
-            setTimeout(() => {
-                state.browse.data = `fetchData : Hello data waited for ${query.wait}ms ( date.now: ${Date.now()} )`
-                resolve()
-            }, parseInt(query.wait));
-        })
+        return actions.test(state, parseInt(query.wait)) // see client/actions.js file, this basically returns a promise with a timeout
     }
     render() {
         return <section>
