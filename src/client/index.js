@@ -8,6 +8,9 @@ import createRoutes from './routes'
 
 import autorun from './autorun.js'
 
+// Get actions object
+import actions from './actions'
+
 // Import our styles
 require('./assets/css/index.scss')
 
@@ -19,7 +22,7 @@ autorun(state)
 
 // Wrap RouterContext with Provider for state transfer 
 function createElement(props) {
-    return <Provider state={state} >
+    return <Provider state={state} actions={actions} >
         <RouterContext {...props} />
     </Provider>
 }
@@ -37,7 +40,7 @@ function onRouterUpdate() {
     let query = this.state.location.query
 
     this.state.components.filter(c => c.fetchData).forEach(c => {
-        c.fetchData({ state, params, query })
+        c.fetchData({ state, params, actions, query })
     })
 }
 
