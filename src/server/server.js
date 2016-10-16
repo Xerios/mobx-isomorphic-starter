@@ -27,6 +27,6 @@ if (config.http.static.length !== 0) {
     })
 }
 
-app.use('/*', require('./render.js'))
+app.use(require('./render.js'))
 app.listen(config.http.port)
 console.log("Launched ! Running on localhost:"+config.http.port)
