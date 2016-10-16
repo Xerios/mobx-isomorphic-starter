@@ -1,13 +1,12 @@
 import React from 'react'
-import Link from 'react-router/lib/Link'
+import { Link } from 'react-router'
 
 export default class Menu extends React.Component {
     render() { 
         const menuNodes = this.props.data.map((item, i) => (
             <Link key={i} 
-                    to={this.props.prefix + item.path}  
-                    className={this.props.current===item.path ? "active":null} 
-                    onlyActiveOnIndex={item.path===''}  
+                    to={item.to} 
+                    activeOnlyWhenExact={item.to==='/'}  
                     activeClassName={"active"} >
             {item.title}
             </Link>
