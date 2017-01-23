@@ -14,7 +14,7 @@ let defaultState =  observable({
 })
 
 
-// Export function that creates our server tate
+// Export function that creates our server state
 export const createServerState = () => toJS(defaultState)
 
 // Export function that creates our client state
