@@ -1,19 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { NavLink } from 'react-router-dom'
 
 export default class Menu extends React.Component {
     render() { 
         const menuNodes = this.props.data.map((item, i) => (
-            <Link key={i} 
+            <NavLink key={i} 
                     to={item.to} 
-                    activeOnlyWhenExact={item.to==='/'}  
-                    activeClassName={"active"} >
+                    strict={false}>
             {item.title}
-            </Link>
+            </NavLink>
         ))
 
-        return (<nav className={this.props.className}>
-                    {menuNodes}
-                </nav>)
+        return (<nav className={this.props.className}>{menuNodes}</nav>)
     }
 }

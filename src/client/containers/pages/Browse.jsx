@@ -4,8 +4,8 @@ import { observer } from 'mobx-react'
 @observer(["state"]) // Only required if you use or change the state outside fetchData
 export default class Browse extends React.Component {
     static fetchData({state, query}){
-        state.app.title = 'Browse'
-        state.browse.data = 'Loading...'
+        //state.app.title = 'Browse'
+        //state.browse.data = 'Loading...'
         return new Promise((resolve)=>{
             setTimeout(() => {
                 state.browse.data = `fetchData : Hello data waited for ${query.wait}ms ( date.now: ${Date.now()} )`

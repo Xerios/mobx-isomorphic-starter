@@ -4,7 +4,7 @@ import React from 'react'
 //@observer(["state"]) // Only required if you use or change the state outside fetchData
 export default class Home extends React.Component {
     static fetchData({state}){
-        state.app.title = 'Home'
+        //state.app.title = 'Home'
     }
     render() {
         return <section>

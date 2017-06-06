@@ -2,11 +2,7 @@ const { observable, extendObservable, toJS } = require('mobx')
 
 // Default state structure
 let defaultState =  observable({
-    app: {
-        title: 'Mobx Isomorphic Starter',
-        description : 'Here goes description',
-        host: ''
-    },
+    host: '',
     browse: {
         data : ''
     }

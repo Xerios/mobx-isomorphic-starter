@@ -3,13 +3,13 @@ const path = require('path')
 const ExtractCSS = require('extract-text-webpack-plugin')
 
 // Define client source path
-const sources = path.join(__dirname, '../src/client')
+const sources = (file = '') => path.join(__dirname, '../src/client', file)
 
 // Default config
 const config = {
-    entry: './index.js',
+    entry: sources('client.js'),
     target: 'web',
-    context: sources,
+    context: sources(),
     node: {
         global: true,
         fs: 'empty'
@@ -19,7 +19,7 @@ const config = {
             {
                 test: /\.jsx?$/,
                 loader: 'babel',
-                include: sources,
+                include: sources(),
                 babelrc: false,
                 query: {
                     cacheDirectory: true,
@@ -48,7 +48,7 @@ const config = {
             {
                 test: /\.(css|scss)(\?.+)?$/,
                 loader: ExtractCSS.extract(['css', 'sass']),
-                include: path.join(sources, 'assets')
+                include: sources('assets')
             }
         ]
     },

@@ -2,24 +2,19 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'mobx-react'
 
-import Router from 'react-router/BrowserRouter'
+import { BrowserRouter } from 'react-router-dom'
 
 
 import createState from './state'
 
-import autorun from './autorun.js'
-
 import App from './containers/App.jsx'
 
 // Import our styles ( for webpack )
-require('./assets/css/index.scss')
+import './assets/css/index.scss'
 
-/*
+
 // Initialize stores & inject server-side state into front-end
 const state = createState(window.__STATE)
-
-// Setup autorun ( for document title change )
-autorun(state)
 
 var ignoreFirstLoad = true
 function onRouterUpdate() {
@@ -40,12 +35,12 @@ function onRouterUpdate() {
 
 // Render HTML on the browser
 function renderRouter() {
-    render(<Router onUpdate={onRouterUpdate}>
-                <Provider state={state} >
-                    <App/>
+    render(<Provider state={state} ><BrowserRouter onUpdate={onRouterUpdate}>
+                
+                    <App/></BrowserRouter>
                 </Provider>
-            </Router>,
+            ,
     document.getElementById('root'))
 }
 
-renderRouter()*/
+renderRouter()

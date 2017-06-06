@@ -1,7 +1,6 @@
 import React from 'react'
 import Menu from '../components/Menu.jsx'
-import Match from 'react-router/Match'
-import Miss from 'react-router/Miss'
+import { Route, Switch } from 'react-router'
 
 var menuData = [
   {title: "Home", to:"/"},
@@ -19,10 +18,12 @@ export default class App extends React.Component {
         return <div>
             <Menu data={menuData} />
 
-            <Match exactly pattern="/"   component={requireAsync('Home')}/>
-            <Match pattern="/browse"     component={requireAsync('Browse')}/>
-            <Match pattern="/about"      component={requireAsync('About')}/>
-            <Miss  component={requireAsync('NotFound')}/>
+            <Switch>
+                <Route exactly path="/"   component={requireAsync('Home')}/>
+                <Route path="/browse"     component={requireAsync('Browse')}/>
+                <Route path="/about"      component={requireAsync('About')}/>
+                <Route component={requireAsync('NotFound')}/>
+            </Switch>
         </div>
     }
 }

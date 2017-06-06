@@ -4,7 +4,7 @@ import { observer } from 'mobx-react'
 @observer(["state"]) // Only required if you use or change the state outside fetchData
 export default class About extends React.Component {
     static fetchData({state}){
-        state.app.title = 'About'
+        //state.app.title = 'About'
     }
     render() {
         return <section>
