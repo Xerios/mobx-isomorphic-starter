@@ -5,8 +5,8 @@ export default class Menu extends React.Component {
     render() { 
         const menuNodes = this.props.data.map((item, i) => (
             <NavLink key={i} 
-                    to={item.to} 
-                    strict={false}>
+                     to={item.to} 
+                     exact={item.to === '/'}>
             {item.title}
             </NavLink>
         ))

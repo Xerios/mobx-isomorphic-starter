@@ -1,5 +1,8 @@
-/*
+// In order to activate mongoDb stuff
+// Install the library : npm i mongoose
+// Uncomment all of this
 
+/*
 import mongoose from 'mongoose'
 import config from '../../../config/server.config'
 
@@ -15,7 +18,6 @@ db.once('open', () => console.info('Mongodb started on port 27017'))
 
 // Initialize our models
 export default db
-
 */
 
 // What the hell is this? ( for newbs )  

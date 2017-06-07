@@ -24,6 +24,6 @@ export default ROUTES = [
  */
 function requireAsync(main) {
     return function(location, next) {
-        next(null, require('./containers/pages/' + main + '.jsx'))
+        next(null, require('./pages/' + main + '.jsx'))
     }
 }

@@ -1,17 +1,37 @@
 import React from 'react'
 import Menu from '../components/Menu.jsx'
-import { Route, Switch } from 'react-router'
+import { Switch, Route } from 'react-router'
+
+import Home from '../pages/Home.jsx'
+import Browse from '../pages/Browse.jsx'
+import About from '../pages/About.jsx'
+import NotFound from '../pages/NotFound.jsx'
+
+export const routes = [
+  { path: '/',
+    exact: true,
+    component: Home,
+  },
+  { path: '/browse',
+    exact: true,
+    component: Browse,
+    loadData: Browse.loadData,
+  },
+  { path: '/about',
+    exact: true,
+    component: About
+  },
+  { 
+    component: NotFound
+  },
+]
 
 var menuData = [
   {title: "Home", to:"/"},
-  {title: "Browse", to: { pathname: "/browse", query: {wait:1000}}},
+  {title: "Browse", to: { pathname: "/browse", search: '?1000'}},
   {title: "About", to:"/about"},
-  {title: "Not Found", to:"/this_url_doesnt_exist"},
+  {title: "Not Found", to:"/this_url_does_not_exist"},
 ]
-
-function requireAsync(main) {
-    return require('./pages/' + main + '.jsx')
-}
 
 export default class App extends React.Component {
     render(){
@@ -19,10 +39,9 @@ export default class App extends React.Component {
             <Menu data={menuData} />
 
             <Switch>
-                <Route exactly path="/"   component={requireAsync('Home')}/>
-                <Route path="/browse"     component={requireAsync('Browse')}/>
-                <Route path="/about"      component={requireAsync('About')}/>
-                <Route component={requireAsync('NotFound')}/>
+                {routes.map((route, i) => (
+                <Route key={i} {...route}/>
+                ))}
             </Switch>
         </div>
     }

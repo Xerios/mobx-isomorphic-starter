@@ -24,22 +24,10 @@ const config = {
                 query: {
                     cacheDirectory: true,
                     plugins: [
-                        "transform-decorators-legacy", // Required for @connect and other decorators
-                        "transform-class-properties", // Required for class props ( ex: see childContextTypes in Context.jsx )
-                        "add-module-exports", // A way to get rid of insanity of require('xx').default
-                        // ES2015 stuff ---
-                        "transform-es2015-modules-commonjs",
-                        "transform-es2015-arrow-functions",
-                        "transform-es2015-block-scoping",
-                        "transform-es2015-block-scoped-functions",
-                        "transform-es2015-classes",
-                        "transform-es2015-computed-properties",
-                        "transform-es2015-destructuring",
-                        "transform-es2015-literals",
-                        "transform-es2015-template-literals",
-                        "transform-es2015-parameters",
-                        "transform-es2015-shorthand-properties",
-                        "transform-es2015-spread",
+                        "add-module-exports",
+                        "transform-object-rest-spread",
+                        "transform-decorators-legacy",
+                        "transform-class-properties",
                         // React ---
                         "transform-react-jsx",
                     ]

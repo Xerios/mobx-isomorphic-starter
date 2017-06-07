@@ -4,7 +4,7 @@ import logger      from 'morgan'
 import bodyParser  from 'body-parser'
 import compression from 'compression'
 import config      from '../../config/server.config'
-import db          from './helpers/database' // Even if we don't use it yet, we start db as soon as possible
+import db          from './database' // Even if we don't use it yet, we start db as soon as possible
 
 const app = express()
 
